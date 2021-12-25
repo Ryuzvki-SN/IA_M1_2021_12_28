@@ -1,8 +1,9 @@
-from collections import Counter
-
 import pandas
 import os
+
+from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
 
 path = os.path.join(os.path.dirname(__file__), '../csv/sonar.all-data.csv')
 
@@ -36,7 +37,19 @@ pandas.set_option('display.max_columns', None)
 """Séparation des données en bases d’apprentissage et de test"""
 
 # Split dataset into train and test
-knn_train, knn_test = train_test_split(observer, test_size=0.4, random_state=42)
+array = observer.values
 
-print(Counter(knn_train))
-print(Counter(knn_test))
+# Convertion des données en type decimal
+X = array[:, 0:-1].astype(float)
+
+# On choisit la dernière colonne comme feature de prédiction
+Y = array[:, -1]
+
+# Création des jeux d'apprentissage et de tests
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
+
+# K PLUS PROCHES VOISINS
+knn = KNeighborsClassifier()
+knn.fit(X_train, Y_train)
+predictions = knn.predict(X_test)
+print("K plus proches voisins : " + str(accuracy_score(predictions, Y_test)))
