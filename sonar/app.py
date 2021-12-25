@@ -36,7 +36,7 @@ pandas.set_option('display.max_columns', None)
 """Séparation des données en bases d’apprentissage et de test"""
 
 # Split dataset into train and test
-knn_train, knn_test = train_test_split(observer)
+knn_train, knn_test = train_test_split(observer, test_size=0.4, random_state=42)
 
 print(Counter(knn_train))
 print(Counter(knn_test))
