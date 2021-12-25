@@ -1,5 +1,8 @@
+from collections import Counter
+
 import pandas
 import os
+from sklearn.model_selection import train_test_split
 
 path = os.path.join(os.path.dirname(__file__), '../csv/sonar.all-data.csv')
 
@@ -11,7 +14,9 @@ observer = pandas.read_csv(path, names=["F1", "F2", "F3", " F4 ", "F5 ", "F6", "
                                         "F44", "F45", "F46", "F47", " F48", "F49", "F50",
                                         "F51", "F52", "F53", "F54", "F55", "F56", "F57", "F58",
                                         "F59", "F60", "OBJET"])
-"""main"""
+
+"""Les k plus proches voisins Classification"""
+
 # print(observer.columns.values)
 
 # Deactivation of the maximum number of columns of the dataframe to be displayed
@@ -24,4 +29,14 @@ pandas.set_option('display.max_columns', None)
 # print(observer.shape)
 
 # display infos of the dataframe
-print(observer.info)
+# classes == 208 (0 to 207)
+# print(observer.info())
+
+
+"""Séparation des données en bases d’apprentissage et de test"""
+
+# Split dataset into train and test
+knn_train, knn_test = train_test_split(observer)
+
+print(Counter(knn_train))
+print(Counter(knn_test))
