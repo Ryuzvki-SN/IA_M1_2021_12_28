@@ -5,6 +5,9 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 
+# Deactivation of the maximum number of columns of the dataframe to be displayed
+pandas.set_option('display.max_columns', None)
+
 path = os.path.join(os.path.dirname(__file__), '../csv/sonar.all-data.csv')
 
 observer = pandas.read_csv(path, names=["F1", "F2", "F3", " F4 ", "F5", "F6", "F7", "F8", "F9", "F10",
@@ -19,9 +22,6 @@ observer = pandas.read_csv(path, names=["F1", "F2", "F3", " F4 ", "F5", "F6", "F
 """The k nearest neighbors Classification"""
 
 # print(observer.columns.values)
-
-# Deactivation of the maximum number of columns of the dataframe to be displayed
-pandas.set_option('display.max_columns', None)
 
 # Display of the first line
 # print(observer.head(1))
@@ -46,7 +46,7 @@ X = array[:, 0:-1].astype(float)
 Y = array[:, -1]
 
 # Création des jeux d'apprentissage et de tests
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=42)
 
 # K PLUS PROCHES VOISINS
 knn = KNeighborsClassifier()
