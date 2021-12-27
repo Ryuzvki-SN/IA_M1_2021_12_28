@@ -4,13 +4,15 @@ import os
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import confusion_matrix
+
 
 # Deactivation of the maximum number of columns of the dataframe to be displayed
 pandas.set_option('display.max_columns', None)
 
 path = os.path.join(os.path.dirname(__file__), '../csv/sonar.all-data.csv')
 
-observer = pandas.read_csv(path, names=["F1", "F2", "F3", " F4 ", "F5", "F6", "F7", "F8", "F9", "F10",
+observer = pandas.read_csv(path, names=["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10",
                                         "F11 ", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19",
                                         "F20", "F21", "F22", "F23", "F24", "F25", "F26", "F27",
                                         "F28", "F29", "F30", "F31", "F32", "F33", "F34", "F35",
@@ -21,13 +23,13 @@ observer = pandas.read_csv(path, names=["F1", "F2", "F3", " F4 ", "F5", "F6", "F
 
 """The k nearest neighbors Classification"""
 
-print(observer.columns.values)
+#print(observer.columns.values)
 
 # Display of the first line
-# print(observer.head(1))
+#print(observer.head(1))
 
 # display dimensions of the dataframe
-# print(observer.shape)
+#print(observer.shape)
 
 # display infos of the dataframe
 # classes == 208 (0 to 207)
@@ -52,4 +54,12 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=42)
 knn = KNeighborsClassifier()
 knn.fit(X_train, Y_train)
 predictions = knn.predict(X_test)
-print("K plus proches voisins : " + str(accuracy_score(predictions, Y_test)))
+#print("K plus proches voisins : " + str(accuracy_score(predictions, Y_test)))
+
+print(confusion_matrix(predictions,Y_test))
+
+#print("---------------------------------\n-------------------------")
+interval=observer[["F2","F3","F4","F5","F6","F7"]]
+#print(interval.describe())
+
+#print (observer. groupby ("OBJET") . size ())
