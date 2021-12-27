@@ -12,5 +12,11 @@ observer = pandas.read_csv(path)
 # print(observer.columns.values)
 # Display of the first line
 # print(observer.head(10))
-# Combien de caractéristiques descriptives
-print(observer.describe())
+#  Combien de caractéristiques descriptives ? De quels types ?
+print(observer.describe())  # types()
+
+
+"""Separation of data into training and test databases"""
+
+# Split dataset into train and test
+array = observer.values
