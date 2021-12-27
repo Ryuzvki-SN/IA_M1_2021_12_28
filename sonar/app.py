@@ -18,7 +18,7 @@ observer = pandas.read_csv(path, names=["F1", "F2", "F3", " F4 ", "F5 ", "F6", "
 
 """Les k plus proches voisins Classification"""
 
-# print(observer.columns.values)
+print(observer.columns.values)
 
 # Deactivation of the maximum number of columns of the dataframe to be displayed
 pandas.set_option('display.max_columns', None)
