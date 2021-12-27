@@ -10,7 +10,7 @@ pandas.set_option('display.max_columns', None)
 
 path = os.path.join(os.path.dirname(__file__), '../csv/sonar.all-data.csv')
 
-observer = pandas.read_csv(path, names=["F1", "F2", "F3", " F4 ", "F5", "F6", "F7", "F8", "F9", "F10",
+observer = pandas.read_csv(path, names=["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10",
                                         "F11 ", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19",
                                         "F20", "F21", "F22", "F23", "F24", "F25", "F26", "F27",
                                         "F28", "F29", "F30", "F31", "F32", "F33", "F34", "F35",
@@ -34,14 +34,14 @@ observer = pandas.read_csv(path, names=["F1", "F2", "F3", " F4 ", "F5", "F6", "F
 
 # classes == 2 (R and M)
 # Combien de caractéristiques descriptives ? De quels types ?
-print(observer.describe())  # types(count, mean, std, min, max)
+# print(observer.describe())  # types(count, mean, std, min, max)
 # Calculer les statistiques de base des variables 2 à 7
 # stat_base = observer[["F2", "F3", "F4", "F5", "F6", "F7"]]
 # print(stat_base.describe())
 # Ex: 208 elements
 # Combien d’exemples de chaque classe
-values_expl = observer['OBJET'].value_counts()
-print("Exemples de chaque classe  : " + str(values_expl))
+# values_expl = observer['OBJET'].value_counts()
+# print("Exemples de chaque classe  : " + str(values_expl))
 # Comment sont organisés les exemples
 
 
