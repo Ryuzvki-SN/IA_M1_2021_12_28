@@ -11,4 +11,6 @@ observer = pandas.read_csv(path)
 
 # print(observer.columns.values)
 # Display of the first line
-print(observer.head(10))
+# print(observer.head(10))
+# Combien de caractéristiques descriptives
+print(observer.describe())

@@ -1,7 +1,7 @@
 import pandas
 import os
 
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 
@@ -19,7 +19,7 @@ observer = pandas.read_csv(path, names=["F1", "F2", "F3", " F4 ", "F5", "F6", "F
                                         "F51", "F52", "F53", "F54", "F55", "F56", "F57", "F58",
                                         "F59", "F60", "OBJET"])
 
-"""The k nearest neighbors Classification"""
+"""Classification"""
 
 # print(observer.columns.values)
 
@@ -30,8 +30,13 @@ observer = pandas.read_csv(path, names=["F1", "F2", "F3", " F4 ", "F5", "F6", "F
 # print(observer.shape)
 
 # display infos of the dataframe
-# classes == 208 (0 to 207)
 # print(observer.info())
+# classes == 2 (R and M)
+# Ex: 208 elements
+# Combien d’exemples de chaque classe
+values_expl = observer['OBJET'].value_counts()
+print("Exemples de chaque classe  : " + str(values_expl))
+# Comment sont organisés les exemples
 
 
 """Separation of data into training and test databases"""
@@ -48,8 +53,11 @@ Y = array[:, -1]
 # Création des jeux d'apprentissage et de tests
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=42)
 
-# K PLUS PROCHES VOISINS
+
+# Matrix de confusion
 knn = KNeighborsClassifier()
 knn.fit(X_train, Y_train)
+print("Train score : " + str(knn.score(X_train, Y_train)))
+print("Test score : " + str(knn.score(X_test, Y_test)))
 predictions = knn.predict(X_test)
-print("K plus proches voisins : " + str(accuracy_score(predictions, Y_test)))
+print("Matrix de confusion : " + str(confusion_matrix(predictions, Y_test)))
