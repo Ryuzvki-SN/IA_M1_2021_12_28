@@ -33,9 +33,11 @@ observer = pandas.read_csv(path, names=["F1", "F2", "F3", " F4 ", "F5", "F6", "F
 # print(observer.info())
 
 # classes == 2 (R and M)
+# Combien de caractéristiques descriptives ? De quels types ?
+print(observer.describe())  # types(count, mean, std, min, max)
 # Calculer les statistiques de base des variables 2 à 7
-stat_base = observer[["F2", "F3", "F4", "F5", "F6", "F7"]]
-print(stat_base.describe())
+# stat_base = observer[["F2", "F3", "F4", "F5", "F6", "F7"]]
+# print(stat_base.describe())
 # Ex: 208 elements
 # Combien d’exemples de chaque classe
 values_expl = observer['OBJET'].value_counts()
