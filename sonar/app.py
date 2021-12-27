@@ -31,7 +31,11 @@ observer = pandas.read_csv(path, names=["F1", "F2", "F3", " F4 ", "F5", "F6", "F
 
 # display infos of the dataframe
 # print(observer.info())
+
 # classes == 2 (R and M)
+# Calculer les statistiques de base des variables 2 à 7
+stat_base = observer[["F2", "F3", "F4", "F5", "F6", "F7"]]
+print(stat_base.describe())
 # Ex: 208 elements
 # Combien d’exemples de chaque classe
 values_expl = observer['OBJET'].value_counts()
@@ -52,7 +56,6 @@ Y = array[:, -1]
 
 # Création des jeux d'apprentissage et de tests
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=42)
-
 
 # Matrix de confusion
 knn = KNeighborsClassifier()
