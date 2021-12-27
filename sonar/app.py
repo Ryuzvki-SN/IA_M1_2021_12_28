@@ -1,11 +1,14 @@
 import pandas
 import os
+import numpy as np
+import matplotlib.pyplot as plt
 
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 
 # Deactivation of the maximum number of columns of the dataframe to be displayed
+
 pandas.set_option('display.max_columns', None)
 
 path = os.path.join(os.path.dirname(__file__), '../csv/sonar.all-data.csv')
@@ -59,10 +62,45 @@ Y = array[:, -1]
 # Création des jeux d'apprentissage et de tests
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, random_state=42)
 
-# Matrix de confusion
-knn = KNeighborsClassifier()
+# #instanciation et définition du k
+knn = KNeighborsClassifier(n_neighbors=1)
 knn.fit(X_train, Y_train)
 print("Train score : " + str(knn.score(X_train, Y_train)))
 print("Test score : " + str(knn.score(X_test, Y_test)))
 predictions = knn.predict(X_test)
 print("Matrix de confusion : " + str(confusion_matrix(predictions, Y_test)))
+
+
+def accuracy(k, x_train, y_train, x_test, y_test):
+    """
+    compute accuracy of the classification based on k values
+    """
+    # instantiate learning model and fit data
+    model = KNeighborsClassifier(n_neighbors=k)
+    model.fit(x_train, y_train)
+
+    # predict the response
+    pred = model.predict(x_test)
+
+    # evaluate and return  accuracy
+    return accuracy_score(y_test, pred)
+
+
+"""Tableau de Score"""
+rows_nbr = observer.shape[0]
+tab_score = np.array([accuracy(k, X_train, Y_train, X_test, Y_test)
+                      for k in range(1, int(rows_nbr / 2))])
+# print(tab_score)
+"""Tableau de K"""
+tab_k = []
+for item in range(1, int(rows_nbr / 2)):
+    tab_k.append(item)
+
+# print(tab_k)
+plt.plot(tab_score, linewidth=2)
+plt.title("la courbe de k en fonction des scores", fontsize=16)
+plt.xlabel("Nombre d'iterations", fontsize=14)
+plt.ylabel("Score", fontsize=14)
+plt.axis([0, 104, 0, 1])
+plt.grid()
+plt.show()
