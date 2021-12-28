@@ -30,14 +30,15 @@ print("----------------------------------------------------------\n\n-----------
 observer.boxplot()
 
 #Calculer et tracer la matrice de corrélation des différentes features
-features = observer[["POINTS_DE_VIE", "NIVEAU_ATTAQUE", "NIVEAU_DEFENSE", "NIVEAU_ATTAQUE_SPECIALE", "NIVEAU_DEFENSE_SPECIALE", "VITESSE","GENERATION"]]
+features = observer[["POINTS_DE_VIE", "NIVEAU_ATTAQUE", "NIVEAU_DEFENSE", "NIVEAU_ATTAQUE_SPECIALE",
+                     "NIVEAU_DEFENSE_SPECIALE", "VITESSE","GENERATION"]]
 var = features.corr()
 print("FEATURES")
 print(var)
 print("----------------------------------------------------------\n\n----------------------------------------------------------")
-
 plt.matshow(var)
 plt.show()
+
 
 """Separation of data into training and test databases"""
 
@@ -67,6 +68,6 @@ plt.scatter(Y_train, prediction)
 plt.show()
 
 #coefficients de corrélation
-print("coefficient de corrélationn test : " +str(numpy.corrcoef(Y_test,predictions, rowvar=False)))
-print("coefficient de corrélationn train : " +str(numpy.corrcoef(Y_train,prediction, rowvar=False)))
+print("coefficient de corrélationn test : " +str(numpy.corrcoef(Y_test, predictions, rowvar=False)))
+print("coefficient de corrélationn train : " +str(numpy.corrcoef(Y_train, prediction, rowvar=False)))
 

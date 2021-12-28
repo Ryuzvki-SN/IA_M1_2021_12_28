@@ -103,6 +103,7 @@ def accuracy(k, x_train, y_train, x_test, y_test):
 rows_nbr = observer.shape[0]
 tab_score = np.array([accuracy(k, X_train, Y_train, X_test, Y_test)
                       for k in range(1, int(rows_nbr / 2))])
+print("Tab Score")
 print(tab_score)
 print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
@@ -111,6 +112,7 @@ tab_k = []
 for item in range(1, int(rows_nbr / 2)):
     tab_k.append(item)
 
+print("Tab K")
 print(tab_k)
 print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
