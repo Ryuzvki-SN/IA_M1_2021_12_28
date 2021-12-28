@@ -80,7 +80,7 @@ print("Train score : " + str(knn.score(X_train, Y_train)))
 print("Test score : " + str(knn.score(X_test, Y_test)))
 predictions = knn.predict(X_test)
 print(confusion_matrix(predictions,Y_test))
-print("----------------------------------------------------------\n\n-----------------------------"-----------------------------)
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 print("Matrix de confusion : " + str(confusion_matrix(predictions, Y_test)))
 print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
@@ -104,7 +104,7 @@ rows_nbr = observer.shape[0]
 tab_score = np.array([accuracy(k, X_train, Y_train, X_test, Y_test)
                       for k in range(1, int(rows_nbr / 2))])
 print(tab_score)
-print("----------------------------------------------------------\n\n-----------------------------"-----------------------------)
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
 """Tableau de K"""
 tab_k = []
@@ -112,7 +112,7 @@ for item in range(1, int(rows_nbr / 2)):
     tab_k.append(item)
 
 print(tab_k)
-print("----------------------------------------------------------\n\n-----------------------------"-----------------------------)
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
 plt.plot(tab_score, linewidth=2)
 plt.title("la courbe de k en fonction des scores", fontsize=16)

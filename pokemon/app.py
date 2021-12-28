@@ -11,6 +11,7 @@ pandas.set_option('display.max_columns', None)
 
 path = os.path.join(os.path.dirname(__file__), '../csv/Pokemon_dataset.csv')
 
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 observer = pandas.read_csv(path)
 print(observer.columns.values)
 print("----------------------------------------------------------\n\n----------------------------------------------------------")
@@ -24,11 +25,14 @@ print("----------------------------------------------------------\n\n-----------
 print(observer.describe())  # types(count, mean, std, min, max)
 print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
+
 #Tracer les boxplots de toutes les variables
 observer.boxplot()
 
 #Calculer et tracer la matrice de corrélation des différentes features
-var = observer.corr()
+features = observer[["POINTS_DE_VIE", "NIVEAU_ATTAQUE", "NIVEAU_DEFENSE", "NIVEAU_ATTAQUE_SPECIALE", "NIVEAU_DEFENSE_SPECIALE", "VITESSE","GENERATION"]]
+var = features.corr()
+print("FEATURES")
 print(var)
 print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
