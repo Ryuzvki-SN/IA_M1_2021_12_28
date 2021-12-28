@@ -25,37 +25,36 @@ observer = pandas.read_csv(path, names=["F1", "F2", "F3", "F4", "F5", "F6", "F7"
                                         "F59", "F60", "OBJET"])
 
 """Classification"""
-
-#print(observer.columns.values)
-#print("-----------------------------\n\n-----------------------------)
+print(observer.columns.values)
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
 # Display of the first line
-#print(observer.head(1))
-#print("-----------------------------\n\n-----------------------------)
+print(observer.head(1))
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
 # display dimensions of the dataframe
-#print(observer.shape)
-#print("-----------------------------\n\n-----------------------------)
+print(observer.shape)
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
 # display infos of the dataframe
-# print(observer.info())
-#print("-----------------------------\n\n-----------------------------)
+print(observer.info())
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
 # classes == 2 (R and M)
 # Combien de caractéristiques descriptives ? De quels types ?
-# print(observer.describe())  # types(count, mean, std, min, max)
-#print("-----------------------------\n\n-----------------------------)
+print(observer.describe())  # types(count, mean, std, min, max)
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
 # Calculer les statistiques de base des variables 2 à 7
-# stat_base = observer[["F2", "F3", "F4", "F5", "F6", "F7"]]
-# print(stat_base.describe())
-#print("-----------------------------\n\n-----------------------------)
+stat_base = observer[["F2", "F3", "F4", "F5", "F6", "F7"]]
+print(stat_base.describe())
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
 # Ex: 208 elements
 # Combien d’exemples de chaque classe
-# values_expl = observer['OBJET'].value_counts()
-# print("Exemples de chaque classe  : " + str(values_expl))
-#print("-----------------------------\n\n-----------------------------)
+values_expl = observer['OBJET'].value_counts()
+print("Exemples de chaque classe  : " + str(values_expl))
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
 # Comment sont organisés les exemples
 
@@ -81,9 +80,9 @@ print("Train score : " + str(knn.score(X_train, Y_train)))
 print("Test score : " + str(knn.score(X_test, Y_test)))
 predictions = knn.predict(X_test)
 print(confusion_matrix(predictions,Y_test))
-#print("-----------------------------\n\n-----------------------------)
+print("----------------------------------------------------------\n\n-----------------------------"-----------------------------)
 print("Matrix de confusion : " + str(confusion_matrix(predictions, Y_test)))
-#print("-----------------------------\n\n-----------------------------)
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
 def accuracy(k, x_train, y_train, x_test, y_test):
     """
@@ -104,13 +103,17 @@ def accuracy(k, x_train, y_train, x_test, y_test):
 rows_nbr = observer.shape[0]
 tab_score = np.array([accuracy(k, X_train, Y_train, X_test, Y_test)
                       for k in range(1, int(rows_nbr / 2))])
-# print(tab_score)
+print(tab_score)
+print("----------------------------------------------------------\n\n-----------------------------"-----------------------------)
+
 """Tableau de K"""
 tab_k = []
 for item in range(1, int(rows_nbr / 2)):
     tab_k.append(item)
 
-# print(tab_k)
+print(tab_k)
+print("----------------------------------------------------------\n\n-----------------------------"-----------------------------)
+
 plt.plot(tab_score, linewidth=2)
 plt.title("la courbe de k en fonction des scores", fontsize=16)
 plt.xlabel("Nombre d'iterations", fontsize=14)

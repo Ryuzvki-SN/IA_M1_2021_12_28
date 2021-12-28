@@ -12,32 +12,28 @@ pandas.set_option('display.max_columns', None)
 path = os.path.join(os.path.dirname(__file__), '../csv/Pokemon_dataset.csv')
 
 observer = pandas.read_csv(path)
-
-# print(observer.columns.values)
+print(observer.columns.values)
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 # Display of the first line
 #HEAD
 # Display of the first line
-#print(observer.head(1))
-#print("-----------------------------\n\n-----------------------------)
+print(observer.head(1))
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
 # Combien de caractéristiques descriptives ? De quels types ?
-# print(observer.describe())  # types(count, mean, std, min, max)
-#print("-----------------------------\n\n-----------------------------)
+print(observer.describe())  # types(count, mean, std, min, max)
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
 #Tracer les boxplots de toutes les variables
-#observer.boxplot()
+observer.boxplot()
 
 #Calculer et tracer la matrice de corrélation des différentes features
-#var = observer.corr()
-#print(var)
-#print("-----------------------------\n\n-----------------------------)
+var = observer.corr()
+print(var)
+print("----------------------------------------------------------\n\n----------------------------------------------------------")
 
-#plt.matshow(var)
-#plt.show()
-
-# print(observer.head(10))
-# Combien de caractéristiques descriptives ? De quels types ?
-#print(observer.describe())  # types()
+plt.matshow(var)
+plt.show()
 
 """Separation of data into training and test databases"""
 
@@ -64,7 +60,7 @@ plt.scatter(Y_test, predictions)
 prediction = algo.predict(X_train)
 plt.scatter(Y_train, prediction)
 #affichage des nuages de points
-#plt.show()
+plt.show()
 
 #coefficients de corrélation
 print("coefficient de corrélationn test : " +str(numpy.corrcoef(Y_test,predictions, rowvar=False)))
